@@ -1,0 +1,12 @@
+{
+  "background_color": "#624040",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "ELKING",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "ELKING",
+  "start_url": "/",
+  "theme_color": "#000000",
+  "description": "ELKING – My Website App"
+}

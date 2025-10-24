@@ -1,90 +1,28 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ELKING_BOT - الــــبــــوب</title>
-  <style>
-    body {
-      background: linear-gradient(180deg, #000, #222);
-      color: #fff;
-      font-family: "Cairo", sans-serif;
-      text-align: center;
-      padding: 50px 20px;
-    }
-    h1 {
-      font-size: 36px;
-      letter-spacing: 2px;
-    }
-    textarea {
-      width: 90%;
-      height: 120px;
-      background: #111;
-      color: #fff;
-      border: 1px solid #444;
-      border-radius: 12px;
-      padding: 10px;
-      font-size: 18px;
-      resize: none;
-      margin-top: 30px;
-    }
-    button {
-      background: #000;
-      color: #fff;
-      border: 1px solid #666;
-      border-radius: 12px;
-      padding: 12px 30px;
-      font-size: 18px;
-      margin-top: 20px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover {
-      background: #111;
-      border-color: #fff;
-    }
-    canvas {
-      margin-top: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #111;
-    }
-  </style>
+  <title>ELKING</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
 </head>
 <body>
-  <h1>🖤 ELKING_BOT 🖤</h1>
-  <p>اكتب عبارتك هنا وسيتم تحويلها إلى صورة بالتوقيع "الــــبــــوب"</p>
-  <textarea id="textInput" placeholder="اكتب العبارة هنا..."></textarea><br>
-  <button onclick="generateImage()">إنشاء الصورة</button>
-  <canvas id="outputCanvas" width="1080" height="1080"></canvas>
+  <h1>مرحبا بك في ELKING</h1>
+  <p>تطبيق الويب التقدمي جاهز للعمل!</p>
 
   <script>
-    function generateImage() {
-      const text = document.getElementById("textInput").value;
-      const canvas = document.getElementById("outputCanvas");
-      const ctx = canvas.getContext("2d");
-
-      // خلفية
-      const gradient = ctx.createLinearGradient(0, 0, 1080, 1080);
-      gradient.addColorStop(0, "#000");
-      gradient.addColorStop(1, "#222");
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, 1080, 1080);
-
-      // النص
-      ctx.fillStyle = "#fff";
-      ctx.font = "bold 60px Cairo";
-      ctx.textAlign = "center";
-      ctx.fillText(text, 540, 500, 900);
-
-      // التوقيع
-      ctx.font = "40px Cairo";
-      ctx.fillText("الــــبــــوب", 540, 950);
-
-      // تحميل الصورة
-      const link = document.createElement("a");
-      link.download = "ELKING_BOT.png";
-      link.href = canvas.toDataURL();
-      link.click();
+    // تسجيل Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+        .then(reg => {
+          console.log('Service Worker مسجل بنجاح:', reg);
+        })
+        .catch(err => {
+          console.log('فشل تسجيل Service Worker:', err);
+        });
+      });
     }
   </script>
 </body>
